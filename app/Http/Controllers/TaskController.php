@@ -15,7 +15,7 @@ class TaskController extends Controller
     public function index()
     {
     
-        return view('tasks.index', ['tasks' => Task::orderBy('updated_at', 'desc')->sim
+        return view('tasks.index', ['tasks' => Task::orderBy('updated_at', 'desc')->simplePaginate(5)
     ]);
     }
 
@@ -40,7 +40,7 @@ class TaskController extends Controller
 
         Task::create($validatedData);
         toast('Votre tache a bien ete cree','success');
-       return redirect('/');
+       return redirect('/tasks');
     }
 
     /**
@@ -77,7 +77,7 @@ class TaskController extends Controller
 
         $task->whereId($task->id)->update($validatedData);
         toast('Votre tache a ete mis a jour ','info');
-        return redirect('/');
+        return redirect('/tasks');
 
         
     }
@@ -91,7 +91,7 @@ class TaskController extends Controller
     
         Task::destroy($id);
         toast('Votre tache a bien ete supprime','error');
-        return redirect('/');
+        return redirect('/tasks');
     
         
     }

@@ -27,4 +27,4 @@ Route::get('/dashboard', function () {
 
 require __DIR__.'/auth.php';
 
-Route::resource('tasks', TaskController::class);
+Route::resource('/tasks', TaskController::class);
